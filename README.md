@@ -9,7 +9,7 @@ Implementation of "[Learning Depth from Monocular Videos using Direct Methods](h
 - visdom, dominate 
 
 ## Acknowledgement
-We referred to "[LKVOLearner](https://github.com/MightyChaos/LKVOLearner)" for the implementation of this paper and we supplemented that with a real-time demo capability.
+We referred to the code directly from "[LKVOLearner](https://github.com/MightyChaos/LKVOLearner)" for the implementation of this paper and we supplemented that with a real-time demo capability.
 
 ## Training
 ### data preparation
@@ -24,14 +24,14 @@ python -m visdom.server -port 8009
 ```
 bash run_train_posenet.sh
 ```
-see [run_train_posenet.sh](https://github.com/MightyChaos/LKVOLearner/blob/master/run_train_posenet.sh) for details.
+see [run_train_posenet.sh](https://github.com/kkrish39/realtime-depth-prediction-from-monocular-videos/blob/main/run_train_posenet.sh) for details.
 
 2. #### finetune with DDVO
 Use pretrained posenet to give initialization for DDVO. Corresponds to the results reported as "PoseNet+DDVO" in the paper.
 ```
 bash run_train_finetune.sh
 ```
-see [run_train_finetune.sh](https://github.com/MightyChaos/LKVOLearner/blob/master/run_train_finetune.sh) for details.
+see [run_train_finetune.sh](https://github.com/kkrish39/realtime-depth-prediction-from-monocular-videos/blob/main/run_train_finetune.sh) for details.
 
 ## Testing
 - Pretrained depth network reported as "Posenet-DDVO(CS+K)" in the paper [[download](https://drive.google.com/file/d/1SJWLfA7kqpERj_U2gYXl7Vuy1eQyOO_K/view?usp=sharing)].
@@ -44,7 +44,7 @@ CUDA_VISIBLE_DEVICES=0 nice -10 python src/testKITTI.py --dataset_root $DATAROOT
 
 ## Real-Time Demo
 - To simulate the real-time from an android device, install the IP webcam app on the device. Note down the URL to which the image data is streamed.
-- To run the real-time demo of the trained model, run the /real-time_demo.py file with the URL through which the real-time video is streamed.
+- To run the real-time demo of the trained model, run the [real-time_demo.py](https://github.com/kkrish39/realtime-depth-prediction-from-monocular-videos/blob/main/src/real-time_demo.py) file with the path to the model and the URL of the IP webcam stream or any other stream of choice. Please refer to line number 39 for more information about receiving the input data.
 - Once it's started, the real-time depth prediction of the scene focused by the android device will be seen on the program window. 
 
 ## Evaluation
